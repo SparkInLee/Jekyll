@@ -1,0 +1,28 @@
+# Jekyll configuration
+
+encoding: 'utf-8'
+
+port: 8080
+baseurl: ''
+detach: false
+
+permalink: /:year/:month/:title
+paginate: 5
+
+highlighter: rouge
+markdown: kramdown
+excerpt_separator: "<!-- excerpt split -->"
+
+gems: ['jekyll-paginate']
+
+exclude: ['.git', '.gitignore', 'README.md','LICENSE']
+keep_files: ['.git', '.gitignore']
+
+# Set this to your UA-# value, or '' to disable the block completely
+gaaccount: 'UA-75606848-1'
+
+# Set this to your disqus shortname to enable comments. Note that the 'comments'
+# setting below must also be true. Individual posts can override 'comments' to
+# disable on a post-by-post basis
+disqus: 'sparklee'
+comments: true

@@ -1,0 +1,40 @@
+---
+layout: default
+---
+
+{% for post in paginator.posts %}
+<div class="article" style="border-bottom: 2px solid #eee;">
+    <div class="well" style="margin-bottom: 0px;">
+        <h1 style="margin-bottom: 10px;">
+          <a href="{{ site.baseurl}}{{ post.url }}">{{ post.title }}</a>
+        </h1>
+        <p style="color: #999;font-size: 10px;margin-bottom: 10px;">
+          <span>{{ post.date | date: "%Y-%m-%d" }}</span>
+          {% if site.comments == true and post.comments == true and site.disqus != '' %}
+            <span class="author" style="margin-left: 10px;">
+              <a href="{{ site.baseurl }}{{ post.url }}#disqus_thread">{{ site.data.strings.zh.comment }}</a>
+            </span>
+          {% endif %}
+        </p>
+        <div class="content">
+            {{ post.excerpt }}
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+<div class="pagination">
+  {% if paginator.previous_page %}
+      {% if paginator.previous_page == 1 %}
+        <a class="btn btn-default" href="{{ site.baseurl}}/index.html" class="previous">{{ site.data.strings.zh.prepage }}</a>
+      {% else %}
+        <a class="btn btn-default" href="{{ site.baseurl}}/page{{ paginator.previous_page }}" class="previous">{{ site.data.strings.zh.prepage }}</a>
+      {% endif %}
+  {% endif %}
+  {% if paginator.total_pages > 1 %}
+    <span class="page_number" style="margin: 0 10px;">{{ paginator.page }} / {{ paginator.total_pages }}</span>
+  {% endif %}
+  {% if paginator.next_page %}
+    <a class="btn btn-default" href="{{ site.baseurl}}/page{{ paginator.next_page }}" class="next">{{ site.data.strings.zh.nextpage }}</a>
+  {% endif %}
+</div>

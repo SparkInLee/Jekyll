@@ -1,0 +1,42 @@
+{% include header.html %}
+
+<div class="container container-left">
+    <div class="row">
+        <div class="col-md-9">
+          <div class="article" style="border-right: 1px solid #eee;border-left: 1px solid #eee;">
+            <div class="well">
+                <h1 style="margin-bottom: 20px;"><a href="{{ site.baseurl}}{{ page.url }}">{{ page.title }}</a></h1>
+            {% if site.comments == true and page.comments == true and site.disqus != '' %}
+                <p class="author">
+                  <a href="#disqus_thread" data-disqus-identifier="{{ page.url | slugify }}">{{ site.data.strings.zh.comment }}</a>
+                </p>
+            {% endif %}
+            <div class="post-content">
+            {{ content }}
+            </div>
+            {% if page.comments %}
+            <div id="disqus_thread" style="margin-top: 50px;">
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <a href="http://disqus.com" class="dsq-brlink"><span class="logo-disqus">正在加载评论...</span></a>
+            </div>
+            {% endif %}
+            </div>
+          </div>
+          <div class="pagination">
+              {% if page.next %}
+                <a class="btn btn-default" href="{{ site.baseurl}}{{ page.next.url }}" class="next">{{ site.data.strings.zh.nextpost }}</a>
+              {% endif %}
+              {% if page.previous %}
+                <a class="btn btn-default" href="{{ site.baseurl}}{{ page.previous.url }}" class="previous">{{ site.data.strings.zh.prepost }}</a>
+              {% endif %}
+</div>
+
+        </div>
+        <div class="col-md-3 hidden-xs">
+            {% include sidebar.html %}
+        </div>
+    </div>
+</div>
+
+{% include disqus-comments.html %}
+{% include footer.html %}
